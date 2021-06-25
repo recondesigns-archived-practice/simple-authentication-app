@@ -52,6 +52,19 @@ const PrimaryButton = styled.button`
     }
 `
 
+const HomeLink = styled.p`
+    margin-top: 40px;
+    width: 100%;
+    color: dodgerblue;
+    text-align: center;
+    cursor: pointer;
+    // border: 1px dashed green;
+
+    &:hover {
+        color: #002D62;
+    }
+`
+
 export default function SingupPage() {
 
     return (
@@ -68,6 +81,7 @@ export default function SingupPage() {
                 placeholder={'Enter password'} 
             />
             <PrimaryButton>{'Sign up'}</PrimaryButton>
+            <HomeLink>{'Back to Home'}</HomeLink>   
         </Container>
     )
 }

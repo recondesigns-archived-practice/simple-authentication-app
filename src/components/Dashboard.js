@@ -93,7 +93,6 @@ export default function DashboardPage() {
                 <DestructiveButton>{'Log out'}</DestructiveButton> 
                 <HomeLink>{'Back to Home'}</HomeLink>  
             </Wrapper>
-
         </Container>
     )
 }
