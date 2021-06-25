@@ -9,13 +9,18 @@ export function AuthProvider({ children }) {
     useEffect(() => {
         auth.onAuthStateChanged((user) => {
             if (user) {
-                console.log(user)
+                const { email, uid } = user
+                const userObj = { email: email, id: uid }
+                // console.log(email)
+                setCurrentUser(userObj)
             } else {
-                console.log('No users logged in.')
+                // console.log('No users logged in.')
             }
         })
         
-    })
+    },[])
+
+    // console.log(9999, currentUser)
 
     return (
         <AuthContext.Provider value={[currentUser, setCurrentUser]}>

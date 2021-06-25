@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import { auth } from '../base'
 import { useHistory } from 'react-router-dom'
+import { AuthContext } from '../contexts/Auth'
 
 const Container = styled.div`
     box-sizing: border-box;
@@ -83,13 +84,14 @@ const DestructiveButton = styled.button`
 `
 
 export default function DashboardPage() {
+    const [currentUser] = useContext(AuthContext)
     let history = useHistory()
 
     function handleLogOutButton() {
         auth.signOut()
-            .then(() => console.log('User has been signed out.'))
+            .then(() => console.log(`Account for ${currentUser.email} has been logged out.`))
             .catch((error) => console.log(error))
-        
+
         history.push('/')
     }
 
@@ -98,9 +100,9 @@ export default function DashboardPage() {
             <Title>{'Dashboard Page'}</Title>
             <Subtitle>{'View user info below.'}</Subtitle>
             <Wrapper>
-                <Name>{'User details'}</Name>  
-                <Email>{'No email available.'}</Email>  
-                <Other>{'No ID available.'}</Other> 
+                <Name>{'Current user details'}</Name>  
+                <Email>{currentUser ? `${currentUser.email}` : 'No email available.'}</Email>  
+                <Other>{currentUser ? `${currentUser.id}` : 'No ID available.'}</Other> 
                 <DestructiveButton onClick={() => handleLogOutButton()}>{'Log out'}</DestructiveButton> 
                 <HomeLink>{'Back to Home'}</HomeLink>  
             </Wrapper>

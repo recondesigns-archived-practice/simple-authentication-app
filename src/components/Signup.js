@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { auth } from '../base'
+import { useHistory } from 'react-router-dom'
 
 const Container = styled.div`
     box-sizing: border-box;
@@ -67,8 +68,15 @@ const HomeLink = styled.p`
 `
 
 export default function SingupPage() {
+    const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [pass, setPass] = useState('')
+    let history = useHistory()
+
+    function handleNameChange(e) {
+        const { value } = e.target
+        setName(value)
+    }
 
     function handleEmailChange(e) {
         const { value } = e.target
@@ -81,16 +89,23 @@ export default function SingupPage() {
     }
 
     function handleSignupButton() {
-        console.log('fired')
         auth.createUserWithEmailAndPassword(email, pass)
-            .then((newUser) => console.log(newUser))
+            .then(() => console.log(`New account has been created for ${email}.`))
             .catch((error) => console.log(error))
+
+        history.push('/dashboard')
     }
 
     return (
         <Container>
             <Title>{'Signup Page'}</Title>
             <Subtitle>{'Please signup with email & password.'}</Subtitle>
+            <Input 
+                type={'text'} 
+                placeholder={'Enter name'} 
+                onChange={(e) => handleNameChange(e)}
+            />
+
             <Input 
                 type={'email'} 
                 placeholder={'Enter email'} 

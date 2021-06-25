@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { auth } from '../base'
+import { useHistory } from 'react-router-dom'
 
 const Container = styled.div`
     box-sizing: border-box;
@@ -71,6 +72,7 @@ const HomeLink = styled.p`
 export default function LoginPage() {
     const [email, setEmail] = useState('')
     const [pass, setPass] = useState('')
+    let history = useHistory()
 
     function handleEmailChange(e) {
         const { value } = e.target
@@ -83,10 +85,11 @@ export default function LoginPage() {
     }
 
     function handleLoginButton() {
-        console.log('fired')
         auth.signInWithEmailAndPassword(email, pass)
-            .then((existingUser) => console.log(existingUser))
+            .then(() => console.log(`${email} has been logged back in.`))
             .catch((error) => console.log(error))
+
+        history.push('/dashboard')
     }
 
     return (
