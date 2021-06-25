@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useHistory } from 'react-router-dom'
 
 const Container = styled.div`
     box-sizing: border-box;
@@ -59,13 +60,22 @@ const SecondaryButton = styled.button`
 `
 
 export default function LandingPage() {
+    let history = useHistory()
+
+    function handleLoginButton() {
+        history.push('/login')
+    }
+
+    function handleSignupButton() {
+        history.push('/signup')
+    }
 
     return (
         <Container>
             <Title>{'Landing Page'}</Title>
             <Subtitle>{'Please log in or sign up.'}</Subtitle>
-            <PrimaryButton>{'Log in'}</PrimaryButton>
-            <SecondaryButton>{'Sign up'}</SecondaryButton>
+            <PrimaryButton onClick={() => handleLoginButton()}>{'Log in'}</PrimaryButton>
+            <SecondaryButton onClick={() => handleSignupButton()}>{'Sign up'}</SecondaryButton>
         </Container>
     )
 }
