@@ -98,7 +98,7 @@ export default function SingupPage() {
         <Container>
             <Title>{'Signup Page'}</Title>
             <Subtitle>{'Please signup with email & password.'}</Subtitle>
-            
+
             <Input 
                 type={'email'} 
                 placeholder={'Enter email'} 
