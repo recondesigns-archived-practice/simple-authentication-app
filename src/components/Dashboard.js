@@ -23,12 +23,77 @@ const Subtitle = styled.p`
     // border: 1px dashed green;
 `
 
+const Wrapper = styled.div`
+    width: 280px;
+    height: auto;
+    // border: 1px solid orange;
+`
+
+const Name = styled.p`
+    margin-bottom: 8px;
+    width: 100%;
+    font-weight: bold;
+    // border: 1px dashed green;
+`
+
+const Email = styled.p`
+    margin-bottom: 4px;
+    width: 100%;
+    font-weight: lighter;
+    // border: 1px dashed green;
+`
+
+const Other = styled.p`
+    width: 100%;
+    font-weight: lighter;
+    // border: 1px dashed green;
+`
+
+const HomeLink = styled.p`
+    margin-top: 20px;
+    width: 100%;
+    color: dodgerblue;
+    text-align: center;
+    cursor: pointer;
+    // border: 1px dashed green;
+
+    &:hover {
+        color: #002D62;
+    }
+`
+
+const DestructiveButton = styled.button`
+    margin-top: 40px;
+    width: 280px;
+    height: 40px;
+    border: none;
+    color: #FFFFFF;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 4px;
+    text-transform: uppercase;
+    background: #EB6E1F;
+    cursor: pointer;
+
+    &:hover {
+        background: #F4911E;
+    }
+`
+
 export default function DashboardPage() {
 
     return (
         <Container>
             <Title>{'Dashboard Page'}</Title>
             <Subtitle>{'View user info below.'}</Subtitle>
+            <Wrapper>
+                <Name>{'User details'}</Name>  
+                <Email>{'No email available.'}</Email>  
+                <Other>{'No ID available.'}</Other> 
+                <DestructiveButton>{'Log out'}</DestructiveButton> 
+                <HomeLink>{'Back to Home'}</HomeLink>  
+            </Wrapper>
+
         </Container>
     )
 }
