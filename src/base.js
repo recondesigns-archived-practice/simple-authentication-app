@@ -6,10 +6,10 @@ const firebaseConfig = {
     projectId: "fire-base-practice-542e5",
     storageBucket: "fire-base-practice-542e5.appspot.com",
     messagingSenderId: "904580328434",
-    appId: "1:904580328434:web:131210278580210621996b"
-  }
+    appId: "1:904580328434:web:743d948aece2019b21996b"
+}
 
-  firebase.initializeApp(firebaseConfig)
-  export const auth = firebase.auth()
+firebase.initializeApp(firebaseConfig)
+export const auth = firebase.auth()
 
-  export default firebase
+export default firebase
