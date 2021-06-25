@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
+import { auth } from '../base'
 
 const Container = styled.div`
     box-sizing: border-box;
@@ -68,6 +69,25 @@ const HomeLink = styled.p`
 
 
 export default function LoginPage() {
+    const [email, setEmail] = useState('')
+    const [pass, setPass] = useState('')
+
+    function handleEmailChange(e) {
+        const { value } = e.target
+        setEmail(value)
+    }
+
+    function handlePassChange(e) {
+        const { value } = e.target
+        setPass(value)
+    }
+
+    function handleLoginButton() {
+        console.log('fired')
+        auth.signInWithEmailAndPassword(email, pass)
+            .then((existingUser) => console.log(existingUser))
+            .catch((error) => console.log(error))
+    }
 
     return (
         <Container>
@@ -76,13 +96,15 @@ export default function LoginPage() {
             <Input 
                 type={'email'} 
                 placeholder={'Enter email'} 
+                onChange={(e) => handleEmailChange(e)}
             />
 
             <Input 
                 type={'password'} 
                 placeholder={'Enter password'} 
+                onChange={(e) => handlePassChange(e)}
             />
-            <PrimaryButton>{'Log in'}</PrimaryButton>
+            <PrimaryButton onClick={() => handleLoginButton()}>{'Log in'}</PrimaryButton>
             <HomeLink>{'Back to Home'}</HomeLink>   
         </Container>
     )
