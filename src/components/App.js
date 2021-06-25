@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom'
 import LandingPage from './Landing'
 import LoginPage from './Login'
 import SignupPage from './Signup'
+import ProtectedRoute from './ProtectedRoute'
 import DashboardPage from './Dashboard'
 
 function App() {
@@ -10,9 +11,10 @@ function App() {
     <>
       <Switch>
         <Route exact path={'/'} component={LandingPage} />
-        <Route exact path={'/login'} component={LoginPage} />
-        <Route exact path={'/signup'} component={SignupPage} />
-        <Route exact path={'/dashboard'} component={DashboardPage} />
+        <Route path={'/login'} component={LoginPage} />
+        <Route path={'/signup'} component={SignupPage} />
+        <ProtectedRoute path={'/dashboard'} component={DashboardPage} />
+        {/* <Route exact path={'/dashboard'} component={DashboardPage} /> */}
       </Switch>
     </>
   )

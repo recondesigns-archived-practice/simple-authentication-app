@@ -68,15 +68,9 @@ const HomeLink = styled.p`
 `
 
 export default function SingupPage() {
-    const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [pass, setPass] = useState('')
     let history = useHistory()
-
-    function handleNameChange(e) {
-        const { value } = e.target
-        setName(value)
-    }
 
     function handleEmailChange(e) {
         const { value } = e.target
@@ -104,12 +98,7 @@ export default function SingupPage() {
         <Container>
             <Title>{'Signup Page'}</Title>
             <Subtitle>{'Please signup with email & password.'}</Subtitle>
-            <Input 
-                type={'text'} 
-                placeholder={'Enter name'} 
-                onChange={(e) => handleNameChange(e)}
-            />
-
+            
             <Input 
                 type={'email'} 
                 placeholder={'Enter email'} 
