@@ -23,12 +23,49 @@ const Subtitle = styled.p`
     // border: 1px dashed green;
 `
 
+const PrimaryButton = styled.button`
+    margin-bottom: 12px;
+    width: 280px;
+    height: 40px;
+    border: none;
+    color: #FFFFFF;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 4px;
+    text-transform: uppercase;
+    background: #414141;
+    cursor: pointer;
+
+    &:hover {
+        opacity: 0.8;
+    }
+`
+
+const SecondaryButton = styled.button`
+    width: 280px;
+    height: 40px;
+    border: 1px solid #414141;
+    color: #414141;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 4px;
+    text-transform: uppercase;
+    background: #FFFFFF;
+    cursor: pointer;
+
+    &:hover {
+        opacity: 0.6;
+    }
+`
+
 export default function LandingPage() {
 
     return (
         <Container>
             <Title>{'Landing Page'}</Title>
             <Subtitle>{'Please log in or sign up.'}</Subtitle>
+            <PrimaryButton>{'Log in'}</PrimaryButton>
+            <SecondaryButton>{'Sign up'}</SecondaryButton>
         </Container>
     )
 }
