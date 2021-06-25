@@ -1,8 +1,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import './index.css'
 import App from './components/App'
 
+function Index() {
+    return (
+        <Router>
+            <App />
+        </Router>
+    )
+}
+
 ReactDOM.render(
-    <App />, document.getElementById('root')
+    <Index />, document.getElementById('root')
 )
