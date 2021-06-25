@@ -96,6 +96,10 @@ export default function SingupPage() {
         history.push('/dashboard')
     }
 
+    function handleHomeLink() {
+        history.push('/')
+    }
+
     return (
         <Container>
             <Title>{'Signup Page'}</Title>
@@ -118,7 +122,7 @@ export default function SingupPage() {
                 onChange={(e) => handlePassChange(e)}
             />
             <PrimaryButton onClick={() => handleSignupButton()}>{'Sign up'}</PrimaryButton>
-            <HomeLink>{'Back to Home'}</HomeLink>   
+            <HomeLink onClick={() => handleHomeLink()}>{'Back to Home'}</HomeLink>   
         </Container>
     )
 }

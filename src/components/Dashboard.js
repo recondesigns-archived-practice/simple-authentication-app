@@ -95,6 +95,10 @@ export default function DashboardPage() {
         history.push('/')
     }
 
+    function handleHomeLink() {
+        history.push('/')
+    }
+
     return (
         <Container>
             <Title>{'Dashboard Page'}</Title>
@@ -104,7 +108,7 @@ export default function DashboardPage() {
                 <Email>{currentUser ? `${currentUser.email}` : 'No email available.'}</Email>  
                 <Other>{currentUser ? `${currentUser.id}` : 'No ID available.'}</Other> 
                 <DestructiveButton onClick={() => handleLogOutButton()}>{'Log out'}</DestructiveButton> 
-                <HomeLink>{'Back to Home'}</HomeLink>  
+                <HomeLink onClick={() => handleHomeLink()}>{'Back to Home'}</HomeLink>  
             </Wrapper>
         </Container>
     )

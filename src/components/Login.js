@@ -92,6 +92,10 @@ export default function LoginPage() {
         history.push('/dashboard')
     }
 
+    function handleHomeLink() {
+        history.push('/')
+    }
+
     return (
         <Container>
             <Title>{'Login Page'}</Title>
@@ -108,7 +112,7 @@ export default function LoginPage() {
                 onChange={(e) => handlePassChange(e)}
             />
             <PrimaryButton onClick={() => handleLoginButton()}>{'Log in'}</PrimaryButton>
-            <HomeLink>{'Back to Home'}</HomeLink>   
+            <HomeLink onClick={() => handleHomeLink()}>{'Back to Home'}</HomeLink>   
         </Container>
     )
 }
