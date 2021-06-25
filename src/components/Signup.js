@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
+import { auth } from '../base'
 
 const Container = styled.div`
     box-sizing: border-box;
@@ -66,6 +67,25 @@ const HomeLink = styled.p`
 `
 
 export default function SingupPage() {
+    const [email, setEmail] = useState('')
+    const [pass, setPass] = useState('')
+
+    function handleEmailChange(e) {
+        const { value } = e.target
+        setEmail(value)
+    }
+
+    function handlePassChange(e) {
+        const { value } = e.target
+        setPass(value)
+    }
+
+    function handleSignupButton() {
+        console.log('fired')
+        auth.createUserWithEmailAndPassword(email, pass)
+            .then((newUser) => console.log(newUser))
+            .catch((error) => console.log(error))
+    }
 
     return (
         <Container>
@@ -74,13 +94,15 @@ export default function SingupPage() {
             <Input 
                 type={'email'} 
                 placeholder={'Enter email'} 
+                onChange={(e) => handleEmailChange(e)}
             />
 
             <Input 
                 type={'password'} 
                 placeholder={'Enter password'} 
+                onChange={(e) => handlePassChange(e)}
             />
-            <PrimaryButton>{'Sign up'}</PrimaryButton>
+            <PrimaryButton onClick={() => handleSignupButton()}>{'Sign up'}</PrimaryButton>
             <HomeLink>{'Back to Home'}</HomeLink>   
         </Container>
     )

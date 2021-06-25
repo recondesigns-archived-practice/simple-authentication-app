@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import { auth } from '../base'
+import { useHistory } from 'react-router-dom'
 
 const Container = styled.div`
     box-sizing: border-box;
@@ -81,6 +83,15 @@ const DestructiveButton = styled.button`
 `
 
 export default function DashboardPage() {
+    let history = useHistory()
+
+    function handleLogOutButton() {
+        auth.signOut()
+            .then(() => console.log('User has been signed out.'))
+            .catch((error) => console.log(error))
+        
+        history.push('/')
+    }
 
     return (
         <Container>
@@ -90,7 +101,7 @@ export default function DashboardPage() {
                 <Name>{'User details'}</Name>  
                 <Email>{'No email available.'}</Email>  
                 <Other>{'No ID available.'}</Other> 
-                <DestructiveButton>{'Log out'}</DestructiveButton> 
+                <DestructiveButton onClick={() => handleLogOutButton()}>{'Log out'}</DestructiveButton> 
                 <HomeLink>{'Back to Home'}</HomeLink>  
             </Wrapper>
         </Container>
